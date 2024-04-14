@@ -4,6 +4,8 @@ const generateButton = document.querySelector("#generator__button_element");
 const slider = document.querySelector(".generator__length-container");
 const sliderValue = document.querySelector(".generator__title_element[data-length]");
 
+let toastBox = document.querySelector(".toast-box");
+
 const characters = {
     uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     lowercase: "abcdefghijklmnopqrstuvwxyz",
@@ -37,33 +39,16 @@ const generatePassword = () => {
     }  
 }
 
-const copyPassword = () => {
+const copyPassword = (action) => {
     output.select();
     output.setSelectionRange(0, 20)
     document.execCommand("copy");
-    showToast('copied');
-}
+    
+    let toastMessage = '';
 
-generateButton.addEventListener("click", generatePassword);
-// ---------------------------------------------------------------------------------------
-
-// ------------------------------       Toast Message       ------------------------------
-let toastBox = document.querySelector(".toast-box");
-
-
-const showToast = (action) => {
-    // let toastMessage = isChecked ? '<i class="fa-solid fa-check"></i>Added Password Setting' : '<i class="fa-solid fa-xmark"></i>Remove Password Setting';
-    let toastMessage;
-
-    if (action === 'copied') {
+    if(action === 'copied') {
         toastMessage = '<i class="fa-solid fa-check"></i>Copied Password';
-    } else {
-        let isChecked = document.getElementById("generator__uppercase").checked,
-            isChecked2 = document.getElementById("generator__lowercase").checked,
-            isChecked3 = document.getElementById("generator__numbers").checked,
-            isChecked4 = document.getElementById("generator__symbols").checked;
-        toastMessage = isChecked || isChecked2 || isChecked3 || isChecked4 ? '<i class="fa-solid fa-check"></i>Added Password Setting' : '<i class="fa-solid fa-xmark"></i>Remove Password Setting';
-    }
+    } 
 
     let toast = document.createElement("div");
     toast.classList.add("toast");
@@ -75,4 +60,4 @@ const showToast = (action) => {
     }, 3000);
 }
 
-
+generateButton.addEventListener("click", generatePassword);
