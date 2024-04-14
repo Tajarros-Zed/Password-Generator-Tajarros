@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="generator__parent-container">
+        <div>
+
+        
+        <div class="generator__child-container">
+            <h1 class="generator__main-title_element">
+                Password Generator
+            </h1>
+            <div class="generator__screen-container">
+                <input type="text" class="generator__generated_element" readonly />
+                <button type="button" id="generator__clipboard_element" onclick="copyPassword()"><i class="fa-regular fa-paste"></i></button>
+            </div>
+
+            <div class="generator__length-container" data-min="8" data-max="20">
+                <div class="generator__title_element generator__title" data-length="8">Password Length:</div>
+                <input type="range" id="generator__slider_element" min="8" max="20" value="8">
+            </div>
+
+            <div class="generator__settings-container">
+                <span class="generator__title_element generator__title">Password Settings</span>
+                <div class="generator__setting_element">
+                    <label class="generator__label-container">
+                        Append Uppercase
+                        <input type="checkbox" id="generator__uppercase" onclick="showToast(this.checked)" />
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="generator__setting_element">
+                    <label class="generator__label-container">
+                        Append Lowercase
+                        <input type="checkbox" id="generator__lowercase" onclick="showToast(this.checked)" />
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="generator__setting_element">
+                    <label class="generator__label-container">
+                        Append Number
+                        <input type="checkbox" id="generator__numbers" onclick="showToast(this.checked)" />
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div class="generator__setting_element">
+                    <label class="generator__label-container">
+                        Append Symbol
+                        <input type="checkbox" id="generator__symbols" onclick="showToast(this.checked)" />
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+
+            <button type="button" class="generator__button-password_element" id="generator__button_element">Generate Password</button>
+        </div>
+        </div>
+
+        <div class="toast-box"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/d870978cd1.js" crossorigin="anonymous"></script>
+</body>
+</html>
